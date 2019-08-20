@@ -28,7 +28,38 @@ public class ArraysTest {
 		number = 1001; // Assign a new value to the number
 		numbers[0] = 5555; // Assign a new value to the numbers[0]
 	}
+	
+	public static void reverseInPlace(int[] array) {
+		int temp;
+		for (int i = 0; i < array.length/2; i++) {
+			temp = array[i];
+			array[i] = array[array.length - i - 1];
+			array[array.length - i - 1] = temp;
+		}
+	}
 
+	public static int linearSearch(int[] list, int key) {
+		for (int i = 0; i < list.length; i++) {
+			if (list[i] == key)
+				return i;
+		}
+		return -1;
+	}
+	
+	public static int binarySearch(int[] list, int key) {
+		int low = 0;
+		int high = list.length - 1;
+		while(high >= low) {
+			int mid = (low + high) / 2;
+			if (key < list[mid])
+				high = mid - 1;
+			else if (key == list[mid])
+				return mid;
+			else
+				low = mid + 1;
+		}
+		return -1 - low;
+	}
 	public static void main(String[] args) {
 		/*
 		double[] myList = new double[10];
